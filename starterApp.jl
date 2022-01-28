@@ -3,7 +3,8 @@ using CSV, DataFrames
 
 data = CSV.read(download("https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv"), DataFrame)
 
-## to do: hover text, plot colors, move legend below, bar borders
+## to do: hover text, move legend below, fatalities being wonky
+## fatalities showing up at very bottom (good thing???)
 
 p = plot(
         data, 
@@ -18,19 +19,25 @@ p = plot(
             bargap = 0,
             plot_bgcolor="#ffffff", 
             xaxis_tickangle=-45,
-            xaxis_nticks = 8,
-            marker_width = 0, ## not working
-            marker_color=["#ED553B", "#f2c82e", "#138808"] ## not working
+            xaxis_nticks = 8, # number of x-axis labels
+            legend_title_text="nothing",
+            legend=attr(
+                y=-0.2,
+                yanchor="bottom",
+                xanchor="left",
+                orientation="h",
+            ) 
         )
     )
-# sets bar colors correctly
-# restyle!(p, 1, marker_color="rgba(237, 85, 59, 1)")
-# restyle!(p, 2, marker_color="rgba(242, 200, 46, 1)")
-# restyle!(p, 3, marker_color="rgba(19, 136, 8, 1)")
+
+# sets bar colors and bar borders
+restyle!(p, 1, marker_color="#ed553b", marker_line_width = 0, textposition ="none")
+restyle!(p, 2, marker_color="#f2c82e", marker_line_width = 0, textposition ="none")
+restyle!(p, 3, marker_color="#138808", marker_line_width = 0, textposition ="none")
 
 # for testing
-restyle!(p, 1, marker_color="rgba(256, 6, 34, 1)")
-restyle!(p, 2, marker_color="rgba(256, 6, 34, 1)")
-restyle!(p, 3, marker_color="rgba(256, 6, 34, 1)")
+# restyle!(p, 1, marker_color="rgba(256, 6, 34, 1)", marker_line_width = 0)
+# restyle!(p, 2, marker_color="rgba(256, 6, 34, 1)", marker_line_width = 0)
+# restyle!(p, 3, marker_color="rgba(256, 6, 34, 1)", marker_line_width = 0)
 
 p
