@@ -3,8 +3,11 @@ using CSV, DataFrames
 
 data = CSV.read(download("https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv"), DataFrame)
 
-## to do: hover text, move legend below, fatalities being wonky
+## to do: hover text, legend formatting, axis formatting fatalities being wonky
 ## fatalities showing up at very bottom (good thing???)
+## plot cases then fatalities then recovered
+## maybe pipe plot into layout
+
 
 p = plot(
         data, 
