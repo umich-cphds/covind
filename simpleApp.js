@@ -38,6 +38,7 @@ function makePlotly(newCases, fatalities, recovered, dates){
             color: '#f2c82e',
         }
     };
+
     var trace2 = {
         x: dates,
         y: fatalities,
@@ -47,6 +48,7 @@ function makePlotly(newCases, fatalities, recovered, dates){
             color: '#ed553b',
         }
     };
+    
     var trace3 = {
         x: dates,
         y: recovered,
@@ -56,6 +58,8 @@ function makePlotly(newCases, fatalities, recovered, dates){
             color: '#138808',
         }
     };
+
+    var data = [trace1, trace2, trace3];
 
     var layout = {
         title: 'Daily number of new COVID-19 cases, fatalities and recovered in India',
@@ -78,12 +82,13 @@ function makePlotly(newCases, fatalities, recovered, dates){
         hovermode: 'closest',
     };
 
-    var data = [trace1, trace2, trace3];
+    var config = {responsive: true};
 
     Plotly.newPlot(
         plotDiv, 
         data, 
-        layout
+        layout,
+        config
     );
 };
 
