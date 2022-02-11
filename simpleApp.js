@@ -79,7 +79,6 @@ function makePlotly(newCases, fatalities, recovered, dates){
                 text: 'Daily counts'
             }
         },
-        hovermode: 'closest',
     };
 
     var config = {responsive: true};
