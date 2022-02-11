@@ -1,1 +1,1 @@
-Newer faster covindia app in Julia
+Newer faster covindia app in Javascript
