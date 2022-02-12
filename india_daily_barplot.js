@@ -1,5 +1,9 @@
 function makeplot(externalData, plotDiv) {
-    Plotly.d3.csv(externalData, function(data){ processData(data, plotDiv) } );
+    Plotly.d3.csv(externalData, function(data)
+        { 
+            processData(data, plotDiv) 
+        } 
+    );
 };
    
 function processData(allRows, plotDiv) {
@@ -89,6 +93,3 @@ function makePlotly(newCases, fatalities, recovered, dates, plotDiv){
     );
 };
 
-var dataFile = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv";
-var plotDiv = document.getElementById("daily_barplot");
-makeplot(dataFile, plotDiv);
