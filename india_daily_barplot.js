@@ -1,8 +1,8 @@
-function makeplot() {
-    Plotly.d3.csv("https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv", function(data){ processData(data) } );
+function makeplot(externalData, plotDiv) {
+    Plotly.d3.csv(externalData, function(data){ processData(data, plotDiv) } );
 };
    
-function processData(allRows) {
+function processData(allRows, plotDiv) {
     console.log(allRows);
     dates = [], newCases = [], fatalities = [], recovered = [];
 
@@ -23,12 +23,10 @@ function processData(allRows) {
         dates.push(row['date']);
     }
     console.log('Dates', dates, 'New Cases', newCases, "Fatalities", fatalities, "Recovered", recovered);
-    makePlotly(newCases, fatalities, recovered, dates);
+    makePlotly(newCases, fatalities, recovered, dates, plotDiv);
 };
 
-function makePlotly(newCases, fatalities, recovered, dates){
-    var plotDiv = document.getElementById("daily_barplot");
-    
+function makePlotly(newCases, fatalities, recovered, dates, plotDiv){    
     var trace1 = {
         x: dates,
         y: newCases,
@@ -91,4 +89,6 @@ function makePlotly(newCases, fatalities, recovered, dates){
     );
 };
 
-makeplot();
+var dataFile = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv";
+var plotDiv = document.getElementById("daily_barplot");
+makeplot(dataFile, plotDiv);
