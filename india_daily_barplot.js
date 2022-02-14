@@ -1,12 +1,12 @@
-function makeplot(externalData, plotDiv) {
+function makeBarPlot(externalData, plotDiv) {
     Plotly.d3.csv(externalData, function(data)
         { 
-            processData(data, plotDiv) 
+            processBarData(data, plotDiv) 
         } 
     );
 };
    
-function processData(allRows, plotDiv) {
+function processBarData(allRows, plotDiv) {
     console.log(allRows);
     dates = [], newCases = [], fatalities = [], recovered = [];
 
@@ -27,10 +27,10 @@ function processData(allRows, plotDiv) {
         dates.push(row['date']);
     }
     console.log('Dates', dates, 'New Cases', newCases, "Fatalities", fatalities, "Recovered", recovered);
-    makePlotly(newCases, fatalities, recovered, dates, plotDiv);
+    makeBarPlotly(newCases, fatalities, recovered, dates, plotDiv);
 };
 
-function makePlotly(newCases, fatalities, recovered, dates, plotDiv){    
+function makeBarPlotly(newCases, fatalities, recovered, dates, plotDiv){    
     var trace1 = {
         x: dates,
         y: newCases,
