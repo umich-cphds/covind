@@ -8,7 +8,7 @@ function makeTVRPlot(externalData, tvrDiv) {
 
 function processTVRData(allRows, tvrDiv) {
     console.log(allRows);
-    dates = [], r = [], lower = [], upper = [];
+    dates = [], r = [], lower = [], upper = [], hoverText = []
 
     for (var i = 0; i < allRows.length; i++) {
         row = allRows[i];
@@ -16,16 +16,18 @@ function processTVRData(allRows, tvrDiv) {
         r.push(row['r']);
         lower.push(row['lower']);
         upper.push(row['upper']);
+        hoverText.push(row['text']);
 
     }
-    console.log('Dates', dates, 'R(t)', r, "Lower", lower, "Upper", upper);
-    makeTVRPlotly(r, dates, tvrDiv, lower, upper);
+    console.log('Dates', dates, 'R(t)', r, "Lower", lower, "Upper", upper, "Text", hoverText);
+    makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText);
 };
 
-function makeTVRPlotly(r, dates, tvrDiv, lower, upper){    
+function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){    
     var trace = {
         x: dates,
         y: r,
+        text: hoverText,
         name: 'New Cases',
         type: 'scatter',
         mode: 'lines+markers',
@@ -38,11 +40,7 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper){
             color: '#36a30b',
             width: 5,
         },
-        // <extra></extra> removes the trace name from hover
-        hovertemplate: 
-            "Date: %{x}" + "<br>" +
-            "R: %{y:.2f}" + "<br><extra></extra>"
-            // '"Cl: [%{lower}, %{upper}]"'
+        hoverinfo: 'text',
     };
 
     var layout = {
