@@ -38,6 +38,11 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper){
             color: '#36a30b',
             width: 5,
         },
+        // <extra></extra> removes the trace name from hover
+        hovertemplate: 
+            "Date: %{x}" + "<br>" +
+            "R: %{y:.2f}" + "<br><extra></extra>"
+            // '"Cl: [%{lower}, %{upper}]"'
     };
 
     var layout = {
@@ -51,6 +56,7 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper){
                 text: 'R(t)'
             },
         },
+        hovermode:'closest',
     };
 
     var data = [trace]
