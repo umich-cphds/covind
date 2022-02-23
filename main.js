@@ -22,3 +22,10 @@ makeVaxPlot(dailyVaxData, dailyVaxDiv)
 var cumulPercVaxData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_cumul_perc_vax.csv";
 var cumulPercVaxDiv = document.getElementById("india_cumul_perc_vax")
 makeCumulPercVaxPlot(cumulPercVaxData, cumulPercVaxDiv)
+
+
+// case, death country comparison
+var caseCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases.csv";
+var deathCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_deaths.csv";
+var countryCompDiv = document.getElementById("countryComp")
+makeCountryCompPlot(caseCountryCompData, countryCompDiv)
