@@ -17,3 +17,8 @@ makeTPRPlot(tprData, tprDiv)
 var dailyVaxData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_vax.csv";
 var dailyVaxDiv = document.getElementById("daily_vax_india")
 makeVaxPlot(dailyVaxData, dailyVaxDiv)
+
+// daily cumul perc vax
+var cumulPercVaxData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_cumul_perc_vax.csv";
+var cumulPercVaxDiv = document.getElementById("india_cumul_perc_vax")
+makeCumulPercVaxPlot(cumulPercVaxData, cumulPercVaxDiv)
