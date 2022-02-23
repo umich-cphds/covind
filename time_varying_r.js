@@ -43,6 +43,29 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
         hoverinfo: 'text',
     };
 
+    var upper = {
+        x: dates,
+        y: upper,
+        type: 'scatter',
+        line: {
+            color: '#36a30b',
+            width: 0,
+            opacity: 0.2,
+        },   
+    }
+
+    var lower = {
+        x: dates,
+        y: lower,
+        type: 'scatter',
+        fill: 'tonexty',
+        line: {
+            color: '#36a30b',
+            width: 0,
+            opacity: 0.2,
+        },
+    }
+
     var layout = {
         title: 'Time-varying R',
         legend: {
@@ -55,9 +78,22 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
             },
         },
         hovermode:'closest',
+        shapes: [{
+            type: 'line',
+            xref: 'paper',
+            x0: 0,
+            y0: 1,
+            x1: 1,
+            y1: 1,
+            opacity: .5,
+            line: {
+              color: 'ff9933',
+            }
+        }],
+        showlegend: false,
     };
 
-    var data = [trace]
+    var data = [upper, lower, trace]
 
     Plotly.newPlot(
         tvrDiv, 
