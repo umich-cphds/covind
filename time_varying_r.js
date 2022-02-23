@@ -28,7 +28,6 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
         x: dates,
         y: r,
         text: hoverText,
-        name: 'New Cases',
         type: 'scatter',
         mode: 'lines+markers',
         marker: {
@@ -51,7 +50,8 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
             color: '#36a30b',
             width: 0,
             opacity: 0.2,
-        },   
+        },  
+        hoverinfo: 'skip', 
     }
 
     var lower = {
@@ -64,14 +64,11 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
             width: 0,
             opacity: 0.2,
         },
+        hoverinfo: 'skip',
     }
 
     var layout = {
         title: 'Time-varying R',
-        legend: {
-            "orientation": "h",
-            y: -.2,
-        },
         yaxis: {
             title: {
                 text: 'R(t)'
