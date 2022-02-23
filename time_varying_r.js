@@ -92,9 +92,12 @@ function makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText){
 
     var data = [upper, lower, trace]
 
+    var config = {responsive: true};
+
     Plotly.newPlot(
         tvrDiv, 
         data,
         layout,
+        config,
     );
 };

@@ -54,9 +54,12 @@ function makeTPRPlotly(rate, dates, tprDiv, hoverText){
 
     var data = [trace]
 
+    var config = {responsive: true};
+
     Plotly.newPlot(
         tprDiv, 
         data,
         layout,
+        config,
     );
 };
