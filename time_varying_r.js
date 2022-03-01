@@ -1,23 +1,24 @@
-function makeTVRPlot(externalData, tvrDiv) {
+function makeTVRPlot(externalData, tvrDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
-            processTVRData(data, tvrDiv) 
+            processTVRData(data, tvrDiv, locale) 
         } 
     );
 };
 
 function processTVRData(allRows, tvrDiv) {
-    console.log(allRows);
     dates = [], r = [], lower = [], upper = [], hoverText = []
 
     for (var i = 0; i < allRows.length; i++) {
         row = allRows[i];
-        dates.push(row['date']);
-        r.push(row['r']);
-        lower.push(row['lower']);
-        upper.push(row['upper']);
-        hoverText.push(row['text']);
-
+        if (row['abbrev'] == locale)
+        {
+            dates.push(row['date']);
+            r.push(row['r']);
+            lower.push(row['lower']);
+            upper.push(row['upper']);
+            hoverText.push(row['text']);
+        }
     }
     console.log('Dates', dates, 'R(t)', r, "Lower", lower, "Upper", upper, "Text", hoverText);
     makeTVRPlotly(r, dates, tvrDiv, lower, upper, hoverText);

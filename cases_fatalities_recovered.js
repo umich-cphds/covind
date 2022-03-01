@@ -1,13 +1,12 @@
-function makeStateBarPlot(externalData, plotDiv, locale) {
+function makeCFRBarPlot(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
-            processStateBarData(data, plotDiv, locale) 
+            processCFRBarPlotData(data, plotDiv, locale) 
         } 
     );
 };
 
-function processStateBarData(allRows, plotDiv, locale) {
-    console.log(allRows);
+function processCFRBarPlotData(allRows, plotDiv, locale) {
     dates = [], newCases = [], fatalities = [], recovered = [];
 
     for (var i = 0; i < allRows.length; i++) {
@@ -21,10 +20,10 @@ function processStateBarData(allRows, plotDiv, locale) {
         }
     }
     console.log('Dates', dates, 'New Cases', newCases, "Fatalities", fatalities, "Recovered", recovered);
-    makeBarPlotly(newCases, fatalities, recovered, dates, plotDiv);
+    makeCFRBarPlotly(newCases, fatalities, recovered, dates, plotDiv);
 };
 
-function makeBarPlotly(newCases, fatalities, recovered, dates, plotDiv){    
+function makeCFRBarPlotly(newCases, fatalities, recovered, dates, plotDiv){    
     var trace1 = {
         x: dates,
         y: newCases,

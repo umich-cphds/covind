@@ -1,12 +1,12 @@
-function makeTPRPlot(externalData, tprDiv) {
+function makeTPRPlot(externalData, tprDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
-            processTPRData(data, tprDiv) 
+            processTPRData(data, tprDiv, locale) 
         } 
     );
 };
 
-function processTPRData(allRows, tprDiv) {
+function processTPRData(allRows, tprDiv, locale) {
     console.log(allRows);
     dates = [], rate = [], hoverText = []
 

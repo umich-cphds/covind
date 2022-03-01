@@ -1,17 +1,19 @@
+var locale = "tt"
+
 // daily barplot
-var dailyBarplotData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_barplot.csv";
+var dailyBarplotData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/raw/everything.csv";
 var dailyBarplotDiv = document.getElementById("daily_barplot");
-makeBarPlot(dailyBarplotData, dailyBarplotDiv);
+makeCFRBarPlot(dailyBarplotData, dailyBarplotDiv, locale);
 
 // time varying r
 var tvrData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/tvr_national.csv";
 var tvrDiv = document.getElementById("time_varying_r")
-makeTVRPlot(tvrData, tvrDiv)
+makeTVRPlot(tvrData, tvrDiv, locale)
 
 // test positive rate
 var tprData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/tpr_national.csv";
 var tprDiv = document.getElementById("test_positive_rate")
-makeTPRPlot(tprData, tprDiv)
+makeTPRPlot(tprData, tprDiv, locale)
 
 // daily vax
 var dailyVaxData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_daily_vax.csv";
