@@ -1,3 +1,5 @@
+/*
+
 var locale = "tt"
 
 // daily barplot
@@ -26,13 +28,15 @@ var cumulPercVaxDiv = document.getElementById("india_cumul_perc_vax")
 makeCumulPercVaxPlot(cumulPercVaxData, cumulPercVaxDiv)
 
 
-// // case, death country comparison
-// var caseCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases.csv";
-// var deathCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_deaths.csv";
-// var countryCompDiv = document.getElementById("countryComp")
-// makeCountryCompPlot(caseCountryCompData, countryCompDiv)
+// // SEIR forecast
+// var SEIRforecastData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_seir.csv";
+// var SEIRforecastDiv = document.getElementById("SEIRforecast")
+// makeSEIRforecastPlot(SEIRforecastData, SEIRforecastDiv)
 
-// SEIR forecast
-var SEIRforecastData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/india_seir.csv";
-var SEIRforecastDiv = document.getElementById("SEIRforecast")
-makeSEIRforecastPlot(SEIRforecastData, SEIRforecastDiv)
+*/
+
+// case, death country comparison
+var caseCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases.csv";
+var deathCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_deaths.csv";
+// var countryCompDiv = document.getElementById("countryComp")
+makeCountryCompPlot(deathCountryCompData, caseCountryCompData, "countryComp")
