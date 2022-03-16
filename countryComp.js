@@ -15,26 +15,58 @@ function makeCountryCompPlot(deathData, caseData, plotDiv) {
 			});
 		}
 
+		countryList = [];
+		for (var i = 0; i < data.length; i++) {
+			if (!countryList.includes(data[i]["Country"]))
+			{
+				countryList.push(data[i]["Country"]);
+			}
+		}
+
+		// create india trace first and remove from country list
+		// then forloop add to mydata
+		// then add india to mydata
+
 		myData = []
 
-		var trace1 = {
-			x: unpack(data, 'China', 'Day'),
-			y: unpack(data, 'China', 'loess_deaths'),
-			type: 'scatter',
-			text: unpack(data, 'China', 'text'),
-			hoverinfo: 'text',
-		}
+		for (var i = 0; i < countryList.length; i++)
+		{
+			var trace = {
+				x: unpack(data, countryList[i], 'Day'),
+				y: unpack(data, countryList[i], 'loess_deaths'),
+				type: 'scatter',
+				text: unpack(data, countryList[i], 'text'),
+				hoverinfo: 'text',
+				name: countryList[i],
+				legendgroup: countryList[i],
+				xaxis: 'x1',
+        		yaxis: 'y1',
+				visible: "legendonly",
+				marker: {
+					color: "red",
+				},
+			}
 
-		var trace2 = {
-			x: unpack(data, 'India', 'Day'),
-			y: unpack(data, 'India', 'loess_deaths'),
-			type: 'scatter',
-			text: unpack(data, 'India', 'text'),
-			hoverinfo: 'text',
-		}
+			var trace1 = {
+				x: unpack(data, countryList[i], 'Day'),
+				y: unpack(data, countryList[i], 'loess_deaths'),
+				type: 'scatter',
+				text: unpack(data, countryList[i], 'text'),
+				hoverinfo: 'text',
+				name: countryList[i],
+				showlegend: false,
+				legendgroup: countryList[i],
+				xaxis: 'x2',
+        		yaxis: 'y2',
+				marker: {
+					color: "red",
+				},
+			}
 
-		myData.push(trace1)
-		myData.push(trace2)
+			myData.push(trace);
+			myData.push(trace1);
+
+		}
 
 		var layout = {
 			title: 'Daily number of COVID-19 cases and deaths',
