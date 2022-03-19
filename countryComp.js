@@ -1,5 +1,5 @@
-function makeCountryCompPlot(deathData, caseData, plotDiv) {
-	Plotly.d3.csv(deathData, function(data)
+function makeCountryCompPlot(countryCompData, plotDiv) {
+	Plotly.d3.csv(countryCompData, function(data)
 	{ 
 		function unpack(data, country, header) {
 			temp = data.filter(function(row) {
@@ -16,6 +16,7 @@ function makeCountryCompPlot(deathData, caseData, plotDiv) {
 		}
 
 		countryList = [];
+
 		for (var i = 0; i < data.length; i++) {
 			if (!countryList.includes(data[i]["Country"]))
 			{
@@ -23,141 +24,119 @@ function makeCountryCompPlot(deathData, caseData, plotDiv) {
 			}
 		}
 
-		// create india trace first and remove from country list
-		// then forloop add to mydata
-		// then add india to mydata
+		// alphabetize, case-insensitive)
+		countryList.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
+
+		// remove india from our list
+		countryList = countryList.filter(e => e != "India");
+
+		colors = ["#0D0887FF", "#2B0594FF", "#42049EFF", 
+				  "#5601A4FF", "#6A00A8FF", "#7E03A8FF", 
+				  "#900DA4FF", "#A11B9BFF", "#B12A90FF", 
+				  "#BF3984FF", "#CC4678FF", "#D6556DFF", 
+				  "#E16462FF", "#EA7457FF", "#F1844BFF", 
+				  "#F89441FF", "#FCA636FF", "#138808"  ]
 
 		myData = []
 
+		// create traces and add them to the data array
 		for (var i = 0; i < countryList.length; i++)
 		{
-			var trace = {
-				x: unpack(data, countryList[i], 'Day'),
-				y: unpack(data, countryList[i], 'loess_deaths'),
+			var caseTrace = {
+				x: unpack(data, countryList[i], 'Cases_day'),
+				y: unpack(data, countryList[i], 'loess_cases'),
 				type: 'scatter',
-				text: unpack(data, countryList[i], 'text'),
+				text: unpack(data, countryList[i], 'Cases_text'),
 				hoverinfo: 'text',
 				name: countryList[i],
+				showlegend: false,
 				legendgroup: countryList[i],
 				xaxis: 'x1',
         		yaxis: 'y1',
 				visible: "legendonly",
 				marker: {
-					color: "red",
+					color: colors[i],
 				},
 			}
 
-			var trace1 = {
-				x: unpack(data, countryList[i], 'Day'),
+			var deathTrace = {
+				x: unpack(data, countryList[i], 'Deaths_day'),
 				y: unpack(data, countryList[i], 'loess_deaths'),
 				type: 'scatter',
-				text: unpack(data, countryList[i], 'text'),
+				text: unpack(data, countryList[i], 'Deaths_text'),
 				hoverinfo: 'text',
 				name: countryList[i],
-				showlegend: false,
 				legendgroup: countryList[i],
 				xaxis: 'x2',
         		yaxis: 'y2',
+				visible: "legendonly",
 				marker: {
-					color: "red",
+					color: colors[i],
 				},
 			}
 
-			myData.push(trace);
-			myData.push(trace1);
-
+			myData.push(deathTrace);
+			myData.push(caseTrace);
 		}
+
+		var indiaCaseTrace = {
+			x: unpack(data, "India", 'Cases_day'),
+			y: unpack(data, "India", 'loess_cases'),
+			type: 'scatter',
+			text: unpack(data, "India", 'Cases_text'),
+			hoverinfo: 'text',
+			name: "India",
+			showlegend: false,
+			legendgroup: "India",
+			xaxis: 'x1',
+			yaxis: 'y1',
+			marker: {
+				color: colors[colors.length-1],
+			},
+		}
+
+		var indiaDeathTrace = {
+			x: unpack(data, "India", 'Deaths_day'),
+			y: unpack(data, "India", 'loess_deaths'),
+			type: 'scatter',
+			text: unpack(data, "India", 'Deaths_text'),
+			hoverinfo: 'text',
+			name: "India",
+			legendgroup: "India",
+			xaxis: 'x2',
+			yaxis: 'y2',
+			marker: {
+				color: colors[colors.length-1],
+			},
+		}
+
+		myData.push(indiaCaseTrace);
+		myData.push(indiaDeathTrace);
 
 		var layout = {
 			title: 'Daily number of COVID-19 cases and deaths',
 			grid: {
-			rows: 2,
-			columns: 1,
+				rows: 2,
+				columns: 1,
 			},
 			hovermode: 'closest',
+			xaxis1: {
+				anchor: 'y1', 
+				title: 'Days since cumulative cases passed 100',
+			},
+			xaxis2: {
+				anchor: 'y2', 
+				title: 'Days since cumulative deaths passed 3',
+			},
 		};
 	
 		var config = {responsive: true};
 	
-
 		Plotly.newPlot(
 			plotDiv, 
 			myData,
 			layout,
 			config,
 		);
-
-		
-
-    	// processCountryCompData(data, plotDiv) 
-	} 
-);
-};
-
-function processCountryCompData(allRows, plotDiv) {
-	dates = [], deathData = [], country = [], hoverText = [];
-
-	for (var i = 0; i < allRows.length; i++)
-	{
-		row = allRows[i];
-		dates.push(row['Day']);
-		deathData.push(row['loess_deaths']);
-		country.push(row['Country']);
-		hoverText.push(row['text']);
-	}
-
-	makeCountryCompPlotly(deathData, dates, country, hoverText, plotDiv);
-}
-
-function makeCountryCompPlotly(deathData, dates, country, hoverText, plotDiv)
-{
-	var trace1 = {
-        x: dates,
-        y: deathData,
-        type: 'scatter',
-        text: hoverText,
-        hoverinfo: 'text',
-        transforms: [{
-            type: 'groupby',
-            groups: country,
-            nameformat: "%{group}",
-        }],
-        xaxis: 'x1',
-        yaxis: 'y1',
-	}
-
-	var trace2 = {
-        x: dates,
-        y: deathData,
-        type: 'scatter',
-        text: hoverText,
-        hoverinfo: 'text',
-        transforms: [{
-            type: 'groupby',
-            groups: country,
-        }],
-        xaxis: 'x2',
-        yaxis: 'y2',
-        showlegend: false,
-	}
-
-	var data = [trace1, trace2];
-
-	var layout = {
-		title: 'Daily number of COVID-19 cases and deaths',
-		grid: {
-		rows: 2,
-		columns: 1,
-		},
-		hovermode: 'closest',
-	};
-
-	var config = {responsive: true};
-
-	Plotly.newPlot(
-		plotDiv, 
-		data, 
-		layout,
-		config
-	);
+	});
 };

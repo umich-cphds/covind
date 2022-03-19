@@ -36,7 +36,6 @@ makeCumulPercVaxPlot(cumulPercVaxData, cumulPercVaxDiv)
 */
 
 // case, death country comparison
-var caseCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases.csv";
-var deathCountryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_deaths.csv";
+var countryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases_and_deaths.csv";
 // var countryCompDiv = document.getElementById("countryComp")
-makeCountryCompPlot(deathCountryCompData, caseCountryCompData, "countryComp")
+makeCountryCompPlot(countryCompData, "countryComp")
