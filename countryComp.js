@@ -2,6 +2,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 	Plotly.d3.csv(countryCompData, function(data)
 	{ 
 		function unpack(data, country, header) {
+			// extract the specific country
 			temp = data.filter(function(row) {
 				if (row["Country"] == country)
 				{
@@ -9,7 +10,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 				}
 
 			});
-
+			// return the column of interest
 			return temp.map(function(row) {
 				return row[header]
 			});
@@ -18,7 +19,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 		countryList = [];
 
 		for (var i = 0; i < data.length; i++) {
-			if (!countryList.includes(data[i]["Country"]))
+			if (!countryList.includes(data[i]["Country"]) && data[i]["Country"] != "India")
 			{
 				countryList.push(data[i]["Country"]);
 			}
@@ -27,8 +28,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 		// alphabetize, case-insensitive)
 		countryList.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
 
-		// remove india from our list
-		countryList = countryList.filter(e => e != "India");
+		countryList.push("India");
 
 		colors = ["#0D0887FF", "#2B0594FF", "#42049EFF", 
 				  "#5601A4FF", "#6A00A8FF", "#7E03A8FF", 
@@ -51,8 +51,8 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 				name: countryList[i],
 				showlegend: false,
 				legendgroup: countryList[i],
-				xaxis: 'x1',
-        		yaxis: 'y1',
+				xaxis: 'x2',
+        		yaxis: 'y2',
 				visible: "legendonly",
 				marker: {
 					color: colors[i],
@@ -67,51 +67,23 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 				hoverinfo: 'text',
 				name: countryList[i],
 				legendgroup: countryList[i],
-				xaxis: 'x2',
-        		yaxis: 'y2',
+				xaxis: 'x1',
+        		yaxis: 'y1',
 				visible: "legendonly",
 				marker: {
 					color: colors[i],
 				},
 			}
 
-			myData.push(deathTrace);
+			if (countryList[i] == "India")
+			{
+				caseTrace.visible = "yes";
+				deathTrace.visible = "yes";
+			}
+
 			myData.push(caseTrace);
+			myData.push(deathTrace);
 		}
-
-		var indiaCaseTrace = {
-			x: unpack(data, "India", 'Cases_day'),
-			y: unpack(data, "India", 'loess_cases'),
-			type: 'scatter',
-			text: unpack(data, "India", 'Cases_text'),
-			hoverinfo: 'text',
-			name: "India",
-			showlegend: false,
-			legendgroup: "India",
-			xaxis: 'x1',
-			yaxis: 'y1',
-			marker: {
-				color: colors[colors.length-1],
-			},
-		}
-
-		var indiaDeathTrace = {
-			x: unpack(data, "India", 'Deaths_day'),
-			y: unpack(data, "India", 'loess_deaths'),
-			type: 'scatter',
-			text: unpack(data, "India", 'Deaths_text'),
-			hoverinfo: 'text',
-			name: "India",
-			legendgroup: "India",
-			xaxis: 'x2',
-			yaxis: 'y2',
-			marker: {
-				color: colors[colors.length-1],
-			},
-		}
-
-		myData.push(indiaCaseTrace);
-		myData.push(indiaDeathTrace);
 
 		var layout = {
 			title: 'Daily number of COVID-19 cases and deaths',
@@ -120,14 +92,62 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 				columns: 1,
 			},
 			hovermode: 'closest',
-			xaxis1: {
-				anchor: 'y1', 
+			// top graph, cases
+			xaxis: {
+				anchor: 'y2',
 				title: 'Days since cumulative cases passed 100',
 			},
+			yaxis2: { 
+				title: 'Incident number of reported cases',
+				domain: [.6,1],
+			},
+
+			// bottom graph, deaths
 			xaxis2: {
-				anchor: 'y2', 
+				anchor: 'y1',
 				title: 'Days since cumulative deaths passed 3',
 			},
+			yaxis: { 
+				title: 'Incident number of reported deaths',
+				domain: [0,.4],
+			},
+
+			annotations: [
+				{
+					showarrow: false,
+					// aligns bottom of text box with desired location
+					yanchor: 'bottom',
+					// sets y(0): bottom of plotting area
+					// sets y(1): top of plotting area
+					yref: 'paper',
+					y: 1,
+					xanchor: 'left',
+					xref: 'paper',
+					x: 0,
+
+					text: "COVID-19 cases in India compared to other countries",
+					font: {
+						size: 18,
+					},
+				},
+				{
+					showarrow: false,
+					// aligns bottom of text box with desired location
+					yanchor: 'bottom',
+					// sets y(0): bottom of plotting area
+					// sets y(1): top of plotting area
+					yref: 'paper',
+					y: .4,
+					xanchor: 'left',
+					xref: 'paper',
+					x: 0,
+
+					text: "COVID-19 deaths in India compared to other countries",
+					font: {
+						size: 18,
+					},
+				},
+			]
 		};
 	
 		var config = {responsive: true};
