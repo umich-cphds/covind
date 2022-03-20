@@ -3,9 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>Covind-19</title>
+        <link rel="stylesheet" type="text/css" href="nav.css"/>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="navbar.js"></script>
     </head>
     <body>
+        <menu>
+            <li><a class="active" href="">National</a></li>
+            <li class="dropdown">
+                <a class="States" id="States">States &#9662</a>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="">Link 1</a>
+                    <a href="">Link 2</a>
+                    <a href="">Link 3vrwwwwwwwwwwwwwww</a>
+                </div>    
+            </li>
+        </menu>
+
         <div id="daily_barplot" style="height:600px;"></div>
         <div id="time_varying_r" style="height:600px;"></div>
         <div id="test_positive_rate" style="height:600px;"></div>
@@ -19,9 +33,8 @@
     <script src="india_daily_vax.js"></script>
     <script src="india_cumul_perc_vax.js"></script>
     <script src="countryComp.js"></script>
-    <script src="SEIRforecast.js"></script>
     
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
 
 </html>
 

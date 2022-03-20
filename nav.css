@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+menu {
+    list-style-type: none;
+    background-color: #F8F8F8;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+menu li {
+    float: left;
+}
+
+menu li .active {
+    background-color: #E7E7E7;
+
+}
+
+menu li .active:hover {
+    color: #777777;
+}
+
+menu li a {
+    display: inline-block;
+    color: #777777;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+menu li a:hover {
+    color: #333333;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
+    margin: 3px;
+
+}
+
+.dropdown-content a {
+    color: #333333;
+    display: block;
+    text-align: left;
+    padding: 3px 20px;
+}
+
+.dropdown-content a:hover {
+    color: #333333;
+    display: block;
+    text-align: left;
+    background-color: #f5f5f5;
+
+}
+
+
+.dropdown-active{
+    display: block;
+}
+
+.States-active{
+    background-color: #E7E7E7;
+}
+
+.States:hover {
+    cursor: pointer;
+}
+
