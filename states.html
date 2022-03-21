@@ -3,9 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>Covind-19</title>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
+        <link rel="stylesheet" type="text/css" href="nav.css"/>
+        <link rel="stylesheet" type="text/css" href="plots.css"/>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+        <script src="navbar.js"></script>
     </head>
     <body>
+        <menu>
+            <li><a>COVID-19 Outbreak in India</a></li>
+            <li><a class="menu-other" href="simpleApp.html">National</a></li>
+            <li class="dropdown"><a class="States active" id="States">States <b class="caret"></b></a>
+                <div class="dropdown-content" id="dropdown-content"></div>    
+            </li>
+            <li><a class="menu-other">Metrics</a></li>
+            <li><a class="menu-other">References</a></li>
+        </menu>
+
+
+
+
+
         <p id="tt" onClick="buildStateSite(this.id)">Mybutton</p>
         <button id="an" onClick="buildStateSite(this.id)">Mybutton</button>
 

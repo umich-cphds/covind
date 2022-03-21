@@ -4,23 +4,26 @@
         <meta charset="utf-8">
         <title>Covind-19</title>
         <link rel="stylesheet" type="text/css" href="nav.css"/>
+        <link rel="stylesheet" type="text/css" href="plots.css"/>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="navbar.js"></script>
     </head>
     <body>
         <menu>
+            <li><a>COVID-19 Outbreak in India</a></li>
             <li><a class="active">National</a></li>
-            <li class="dropdown"><a class="States" id="States">States &#9662</a>
-                <div class="dropdown-content" id="dropdown-content">
-                </div>    
+            <li class="dropdown"><a class="States" id="States">States <b class="caret"></b></a>
+                <div class="dropdown-content" id="dropdown-content"></div>    
             </li>
+            <li><a class="menu-other">Metrics</a></li>
+            <li><a class="menu-other">References</a></li>
         </menu>
 
-        <div id="daily_barplot" style="height:600px;"></div>
-        <div id="time_varying_r" style="height:600px;"></div>
-        <div id="test_positive_rate" style="height:600px;"></div>
-        <div id="daily_vax_india" style="height:600px;"></div>
-        <div id="india_cumul_perc_vax" style="height:600px;"></div>
+        <div class="standardPlot" id="daily_barplot"></div>
+        <div class="standardPlot" id="time_varying_r"></div>
+        <div class="standardPlot" id="test_positive_rate"></div>
+        <div class="standardPlot" id="daily_vax_india"></div>
+        <div class="standardPlot" id="india_cumul_perc_vax"></div>
         <div id="countryComp" style="height:800px;"></div>
     </body>
     <script src="cases_fatalities_recovered.js"></script>
@@ -30,7 +33,9 @@
     <script src="india_cumul_perc_vax.js"></script>
     <script src="countryComp.js"></script>
     
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
+    <script src="state.js"></script>
+
 
 </html>
 

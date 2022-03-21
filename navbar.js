@@ -16,27 +16,30 @@ Plotly.d3.csv(dataURL, function(data) {
     {
         state = document.createElement("a");
         state.innerHTML = statesList[i];
-        state.setAttribute("class", statesList[i]);
-
+        state.setAttribute("id", statesList[i]);
         document.getElementById("dropdown-content").appendChild(state);
-
     }
 })
 
-// states dropdown toggler
-window.onload = function () {
-    document.addEventListener("click", function(e) {
-        // if clicked
-        if (e.target.id == "States")
-        {
-            document.getElementById("dropdown-content").classList.toggle("dropdown-active");
-            document.getElementById("States").classList.toggle("States-active");
-        }
-        // if open and anywhere is clicked
-        else if (document.getElementById("dropdown-content").classList.contains("dropdown-active")){
-            document.getElementById("dropdown-content").classList.toggle("dropdown-active");
-            document.getElementById("States").classList.toggle("States-active");
+// page changer
+document.addEventListener("click", function(e) {
+    // state pressed
+    if (e.target.parentNode.id == "dropdown-content")
+    {
+        document.getElementById("countryComp").remove();
+        buildStateSite(e.target.id)
+    }
+    
+    // toggle state nav bar appearance
+    if (e.target.id == "States")
+    {
+        document.getElementById("dropdown-content").classList.toggle("dropdown-active");
+        document.getElementById("States").classList.toggle("States-active");
+    }
+    // if open and anywhere is clicked
+    else if (document.getElementById("dropdown-content").classList.contains("dropdown-active")){
+        document.getElementById("dropdown-content").classList.toggle("dropdown-active");
+        document.getElementById("States").classList.toggle("States-active");
 
-        }
-    })
-}
+    }
+})
