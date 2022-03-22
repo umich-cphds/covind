@@ -1,10 +1,12 @@
 function makeCumulPercVaxPlot2(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         {
+            var start = getStart(data, locale, "pct_one_dose")
+
             var oneDoseTrace = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "pct_one_dose"),
-                text: unpack(data, locale, "pct_one_dose_text"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "pct_one_dose", start),
+                text: unpack(data, locale, "pct_one_dose_text", start),
                 type: 'scatter',
                 mode: 'lines',
                 line: {
@@ -15,9 +17,9 @@ function makeCumulPercVaxPlot2(externalData, plotDiv, locale) {
             };
         
             var twoDoseTrace = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "pct_two_doses"),
-                text: unpack(data, locale, "pct_two_doses_text"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "pct_two_doses", start),
+                text: unpack(data, locale, "pct_two_doses_text", start),
                 type: 'scatter',
                 mode: 'lines',
                 line: {

@@ -1,10 +1,12 @@
 function makeTVRPlot2(externalData, tvrDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
+            var start = getStart(data, locale, "r")
+
             var trace = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "r"),
-                text: unpack(data, locale, "r_text"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "r", start),
+                text: unpack(data, locale, "r_text", start),
                 type: 'scatter',
                 mode: 'lines+markers',
                 marker: {
@@ -20,8 +22,8 @@ function makeTVRPlot2(externalData, tvrDiv, locale) {
             };
         
             var upper = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "r_upper"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "r_upper", start),
                 type: 'scatter',
                 line: {
                     color: '#36a30b',
@@ -32,8 +34,8 @@ function makeTVRPlot2(externalData, tvrDiv, locale) {
             }
         
             var lower = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "r_lower"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "r_lower", start),
                 type: 'scatter',
                 fill: 'tonexty',
                 line: {

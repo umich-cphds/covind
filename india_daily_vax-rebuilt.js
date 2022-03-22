@@ -1,9 +1,11 @@
 function makeVaxPlot2(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
+            var start = getStart(data, locale, "daily_doses");
+
             var trace = {
-                x: unpack(data, locale, "date"),
-                y: unpack(data, locale, "daily_doses"),
+                x: unpack(data, locale, "date", start),
+                y: unpack(data, locale, "daily_doses", start),
                 // text: hoverText,
                 type: 'bar',
                 marker: {
