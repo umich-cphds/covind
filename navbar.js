@@ -1,3 +1,10 @@
+// set menu id
+window.addEventListener("load", function() {
+    console.log("load")
+    document.getElementById("navbar").firstElementChild.setAttribute("id", "national")
+})
+
+
 // add state options to menu
 dataURL = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv"
 statesList = [];
@@ -23,13 +30,17 @@ Plotly.d3.csv(dataURL, function(data) {
 
 // page changer
 document.addEventListener("click", function(e) {
-    // state pressed
+    // specific state pressed
     if (e.target.parentNode.id == "dropdown-content")
     {
-        document.getElementById("countryComp").remove();
+        console.log(document.getElementById("navbar").firstElementChild.id)
+        if (document.getElementById("navbar").firstElementChild.id == "national")       
+        {
+            document.getElementById("countryComp").remove();
+        }
+        document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
         buildStateSite(e.target.id)
     }
-    
     // toggle state nav bar appearance
     if (e.target.id == "States")
     {
