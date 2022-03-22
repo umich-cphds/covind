@@ -1,7 +1,7 @@
 function makeCountryCompPlot(countryCompData, plotDiv) {
 	Plotly.d3.csv(countryCompData, function(data)
 	{ 
-		function unpack(data, country, header) {
+		function unpackCountry(data, country, header) {
 			// extract the specific country
 			temp = data.filter(function(row) {
 				if (row["Country"] == country)
@@ -43,10 +43,10 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 		for (var i = 0; i < countryList.length; i++)
 		{
 			var caseTrace = {
-				x: unpack(data, countryList[i], 'Cases_day'),
-				y: unpack(data, countryList[i], 'loess_cases'),
+				x: unpackCountry(data, countryList[i], 'Cases_day'),
+				y: unpackCountry(data, countryList[i], 'loess_cases'),
 				type: 'scatter',
-				text: unpack(data, countryList[i], 'Cases_text'),
+				text: unpackCountry(data, countryList[i], 'Cases_text'),
 				hoverinfo: 'text',
 				name: countryList[i],
 				showlegend: false,
@@ -60,10 +60,10 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 			}
 
 			var deathTrace = {
-				x: unpack(data, countryList[i], 'Deaths_day'),
-				y: unpack(data, countryList[i], 'loess_deaths'),
+				x: unpackCountry(data, countryList[i], 'Deaths_day'),
+				y: unpackCountry(data, countryList[i], 'loess_deaths'),
 				type: 'scatter',
-				text: unpack(data, countryList[i], 'Deaths_text'),
+				text: unpackCountry(data, countryList[i], 'Deaths_text'),
 				hoverinfo: 'text',
 				name: countryList[i],
 				legendgroup: countryList[i],

@@ -1,0 +1,82 @@
+function makeTVRPlot2(externalData, tvrDiv, locale) {
+    Plotly.d3.csv(externalData, function(data)
+        { 
+            var trace = {
+                x: unpack(data, locale, "date"),
+                y: unpack(data, locale, "r"),
+                text: unpack(data, locale, "r_text"),
+                type: 'scatter',
+                mode: 'lines+markers',
+                marker: {
+                    color: '#262626',
+                    size: 4,
+                    symbol: 3,
+                },
+                line: {
+                    color: '#36a30b',
+                    width: 5,
+                },
+                hoverinfo: 'text',
+            };
+        
+            var upper = {
+                x: unpack(data, locale, "date"),
+                y: unpack(data, locale, "r_upper"),
+                type: 'scatter',
+                line: {
+                    color: '#36a30b',
+                    width: 0,
+                    opacity: 0.2,
+                },  
+                hoverinfo: 'skip', 
+            }
+        
+            var lower = {
+                x: unpack(data, locale, "date"),
+                y: unpack(data, locale, "r_lower"),
+                type: 'scatter',
+                fill: 'tonexty',
+                line: {
+                    color: '#36a30b',
+                    width: 0,
+                    opacity: 0.2,
+                },
+                hoverinfo: 'skip',
+            }
+        
+            var layout = {
+                title: 'Time-varying R',
+                yaxis: {
+                    title: {
+                        text: 'R(t)'
+                    },
+                },
+                hovermode:'closest',
+                shapes: [{
+                    type: 'line',
+                    xref: 'paper',
+                    x0: 0,
+                    y0: 1,
+                    x1: 1,
+                    y1: 1,
+                    opacity: .5,
+                    line: {
+                      color: 'ff9933',
+                    }
+                }],
+                showlegend: false,
+            };
+        
+            var data = [upper, lower, trace]
+        
+            var config = {responsive: true};
+        
+            Plotly.newPlot(
+                tvrDiv, 
+                data,
+                layout,
+                config,
+            );
+        } 
+    );    
+};
