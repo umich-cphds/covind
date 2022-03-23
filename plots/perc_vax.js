@@ -1,4 +1,4 @@
-function makeCumulPercVaxPlot2(externalData, plotDiv, locale) {
+function makePercVaxPlot(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         {
             var start = getStart(data, locale, "pct_one_dose")

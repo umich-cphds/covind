@@ -18,17 +18,17 @@ function buildPlots(id) {
     var locale = id;
 
     var dailyBarplotDiv = document.getElementById("daily_barplot");
-    makeCFRBarPlot2(data, dailyBarplotDiv, locale);
+    makeDailyBarPlot(data, dailyBarplotDiv, locale);
 
     var tvrDiv = document.getElementById("time_varying_r");
-    makeTVRPlot2(data, tvrDiv, locale);
+    makeTVRPlot(data, tvrDiv, locale);
 
     var tprDiv = document.getElementById("test_positive_rate");
-    makeTPRPlot2(data, tprDiv, locale);
+    makeTPRPlot(data, tprDiv, locale);
 
     var vaxDiv = document.getElementById("daily_vax_india");
-    makeVaxPlot2(data, vaxDiv, id)
+    makeDailyVaxPlot(data, vaxDiv, id)
 
     var precVaxDiv = document.getElementById("india_cumul_perc_vax");
-    makeCumulPercVaxPlot2(data, precVaxDiv, id)
+    makePercVaxPlot(data, precVaxDiv, id)
 }

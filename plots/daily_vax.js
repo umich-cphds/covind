@@ -1,4 +1,4 @@
-function makeVaxPlot2(externalData, plotDiv, locale) {
+function makeDailyVaxPlot(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
             var start = getStart(data, locale, "daily_doses");

@@ -1,4 +1,4 @@
-function makeTPRPlot2(externalData, tprDiv, locale) {
+function makeTPRPlot(externalData, tprDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         {
             var trace = {

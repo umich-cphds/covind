@@ -1,4 +1,4 @@
-function makeTVRPlot2(externalData, tvrDiv, locale) {
+function makeTVRPlot(externalData, tvrDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         { 
             var start = getStart(data, locale, "r")

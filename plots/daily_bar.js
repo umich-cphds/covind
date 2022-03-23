@@ -1,4 +1,4 @@
-function makeCFRBarPlot2(externalData, plotDiv, locale) {
+function makeDailyBarPlot(externalData, plotDiv, locale) {
     Plotly.d3.csv(externalData, function(data)
         {
             var trace1 = {
