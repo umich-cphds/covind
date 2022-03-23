@@ -1,9 +1,3 @@
-// set menu id
-window.addEventListener("load", function() {
-    document.getElementById("navbar").firstElementChild.setAttribute("id", "national")
-})
-
-
 // add state options to menu
 dataURL = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv"
 statesList = [];
@@ -32,13 +26,18 @@ document.addEventListener("click", function(e) {
     // specific state pressed
     if (e.target.parentNode.id == "dropdown-content")
     {
+        // breakdown current "site"
+        // build new site
+
+
+
         console.log(document.getElementById("navbar").firstElementChild.id)
         if (document.getElementById("navbar").firstElementChild.id == "national")       
         {
             document.getElementById("countryComp").remove();
         }
         document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
-        buildStateSite(e.target.id)
+        buildPlots(e.target.id)
     }
     // toggle state nav bar appearance
     if (e.target.id == "States")
