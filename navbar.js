@@ -1,6 +1,5 @@
 // set menu id
 window.addEventListener("load", function() {
-    console.log("load")
     document.getElementById("navbar").firstElementChild.setAttribute("id", "national")
 })
 

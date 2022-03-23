@@ -4,9 +4,9 @@ function makeTVRPlot2(externalData, tvrDiv, locale) {
             var start = getStart(data, locale, "r")
 
             var trace = {
-                x: unpack(data, locale, "date", start),
-                y: unpack(data, locale, "r", start),
-                text: unpack(data, locale, "r_text", start),
+                x: unpack(data, locale, "date", start, "r"),
+                y: unpack(data, locale, "r", start, "r"),
+                text: unpack(data, locale, "r_text", start, "r"),
                 type: 'scatter',
                 mode: 'lines+markers',
                 marker: {
@@ -22,8 +22,8 @@ function makeTVRPlot2(externalData, tvrDiv, locale) {
             };
         
             var upper = {
-                x: unpack(data, locale, "date", start),
-                y: unpack(data, locale, "r_upper", start),
+                x: unpack(data, locale, "date", start, "r"),
+                y: unpack(data, locale, "r_upper", start, "r"),
                 type: 'scatter',
                 line: {
                     color: '#36a30b',
@@ -34,8 +34,8 @@ function makeTVRPlot2(externalData, tvrDiv, locale) {
             }
         
             var lower = {
-                x: unpack(data, locale, "date", start),
-                y: unpack(data, locale, "r_lower", start),
+                x: unpack(data, locale, "date", start, "r"),
+                y: unpack(data, locale, "r_lower", start, "r"),
                 type: 'scatter',
                 fill: 'tonexty',
                 line: {

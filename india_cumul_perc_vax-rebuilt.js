@@ -4,9 +4,9 @@ function makeCumulPercVaxPlot2(externalData, plotDiv, locale) {
             var start = getStart(data, locale, "pct_one_dose")
 
             var oneDoseTrace = {
-                x: unpack(data, locale, "date", start),
-                y: unpack(data, locale, "pct_one_dose", start),
-                text: unpack(data, locale, "pct_one_dose_text", start),
+                x: unpack(data, locale, "date", start, "pct_one_dose"),
+                y: unpack(data, locale, "pct_one_dose", start, "pct_one_dose"),
+                text: unpack(data, locale, "pct_one_dose_text", start, "pct_one_dose"),
                 type: 'scatter',
                 mode: 'lines',
                 line: {
@@ -17,9 +17,9 @@ function makeCumulPercVaxPlot2(externalData, plotDiv, locale) {
             };
         
             var twoDoseTrace = {
-                x: unpack(data, locale, "date", start),
-                y: unpack(data, locale, "pct_two_doses", start),
-                text: unpack(data, locale, "pct_two_doses_text", start),
+                x: unpack(data, locale, "date", start, "pct_one_dose"),
+                y: unpack(data, locale, "pct_two_doses", start, "pct_one_dose"),
+                text: unpack(data, locale, "pct_two_doses_text", start, "pct_one_dose"),
                 type: 'scatter',
                 mode: 'lines',
                 line: {

@@ -1,7 +1,4 @@
-// document.getElementById("test").addEventListener("click", myFunction);
-
 function buildStateSite(id) {
-    // state daily barplot
     var data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv";
     var locale = id;
 
