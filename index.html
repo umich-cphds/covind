@@ -25,21 +25,17 @@
         <div id="navbar">
             <menu>
                 <li><a>COVID-19 Outbreak in India</a></li>
-                <li><a class="active">National</a></li>
+                <li><a class="active" id="National">National</a></li>
                 <li class="dropdown"><a class="States" id="States">States <b class="caret"></b></a>
                     <div class="dropdown-content" id="dropdown-content"></div>    
                 </li>
-                <li><a class="menu-other">Metrics</a></li>
-                <li><a class="menu-other">References</a></li>
+                <li><a class="menu-other" id="Metrics">Metrics</a></li>
+                <li><a class="menu-other" id="References">References</a></li>
             </menu>
         </div>
 
-        <div class="standardPlot" id="daily_barplot"></div>
-        <div class="standardPlot" id="tvr"></div>
-        <div class="standardPlot" id="tpr"></div>
-        <div class="standardPlot" id="daily_vax"></div>
-        <div class="standardPlot" id="perc_vax"></div>
-        <div id="countryComp" style="height:800px;"></div>
+        <div id="plots"></div>
+
     </body>
 </html>
 

@@ -1,6 +1,7 @@
 // set menu id, build national data
 window.addEventListener("load", function() {
     document.getElementById("navbar").firstElementChild.setAttribute("id", "national")
+    buildNationalSite();
     buildNational();
 })
 

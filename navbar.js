@@ -21,34 +21,99 @@ Plotly.d3.csv(dataURL, function(data) {
     }
 })
 
+//----------------------------------------------------------------------------------------------------//
+
 // page changer
 document.addEventListener("click", function(e) {
-    // specific state pressed
-    if (e.target.parentNode.id == "dropdown-content")
-    {
-        // breakdown current "site"
-        // build new site
+    console.log(e.target.id)
+    console.log(e.target.parentNode.parentNode.tagName)
 
-
-
-        console.log(document.getElementById("navbar").firstElementChild.id)
-        if (document.getElementById("navbar").firstElementChild.id == "national")       
-        {
-            document.getElementById("countryComp").remove();
-        }
-        document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
-        buildPlots(e.target.id)
-    }
     // toggle state nav bar appearance
     if (e.target.id == "States")
     {
-        document.getElementById("dropdown-content").classList.toggle("dropdown-active");
-        document.getElementById("States").classList.toggle("States-active");
+        toggleMenu();
     }
-    // if open and anywhere is clicked
-    else if (document.getElementById("dropdown-content").classList.contains("dropdown-active")){
-        document.getElementById("dropdown-content").classList.toggle("dropdown-active");
-        document.getElementById("States").classList.toggle("States-active");
+    // if non-active menu button (besides states) is pressed ***NEED TO IMPLEMENT NON_ACTIVE PART
+    else if (e.target.parentNode.parentNode.tagName == "MENU")
+    {
+        siteBreakdown();
+        siteBuildUp(e.target.id);
+    }
+
+
+
+
+    // specific state pressed
+    else if (e.target.parentNode.id == "dropdown-content")
+    {
+        siteBreakdown();
+        siteBuildUp();
+
+        
+        buildPlotSite()
+        document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
+        buildPlots(e.target.id)
+
+        toggleMenu();
 
     }
+    // if open and anywhere is clicked
+    else if (document.getElementById("dropdown-content").classList.contains("dropdown-active")) {
+        toggleMenu();
+    }
 })
+
+function toggleMenu() {
+    document.getElementById("dropdown-content").classList.toggle("dropdown-active");
+    document.getElementById("States").classList.toggle("States-active");
+}
+
+function siteBuildUp(siteName) {
+    if (siteName == 'National')
+    {
+        console.log("here")
+        buildNationalSite();
+    }
+
+}
+function siteBreakdown()
+{
+    if (document.getElementById("navbar").firstElementChild.id == "national")       
+    {
+        breakdownPlots()
+    }
+    else if (document.getElementById("navbar").firstElementChild.id == "states")
+    {
+        breakdownPlots()
+    }
+}
+
+function breakdownPlots()
+{
+    while (document.getElementById("plots").firstChild)
+    {
+        document.getElementById("plots").firstChild.remove()
+    }
+}
+
+function buildNationalSite()
+{
+    buildPlotSite()
+    e = document.createElement('div');
+    e.setAttribute('id', "countryComp");
+    e.setAttribute('style', "height:800px");
+    document.getElementById("plots").appendChild(e)
+}
+
+function buildPlotSite()
+{
+    plots = ["daily_barplot", "tvr", "tpr", "daily_vax", "perc_vax"];
+
+    for (var i = 0; i < plots.length; i++)
+    {
+        e = document.createElement('div');
+        e.setAttribute('class', "standardPlot");
+        e.setAttribute('id', plots[i]);
+        document.getElementById("plots").appendChild(e)
+    }
+}
