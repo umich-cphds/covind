@@ -4,7 +4,7 @@ statesList = [];
 Plotly.d3.csv(dataURL, function(data) {
 
     for (var i = 0; i < data.length; i++) {
-        if (!statesList.includes(data[i]["place"]))
+        if (!statesList.includes(data[i]["place"]) && data[i]["place"] != "India")
         {
             statesList.push(data[i]["place"]);
         }
@@ -25,9 +25,6 @@ Plotly.d3.csv(dataURL, function(data) {
 
 // page changer
 document.addEventListener("click", function(e) {
-    console.log(e.target.id)
-    console.log(e.target.parentNode.parentNode.tagName)
-
     // toggle state nav bar appearance
     if (e.target.id == "States")
     {
@@ -36,26 +33,20 @@ document.addEventListener("click", function(e) {
     // if non-active menu button (besides states) is pressed ***NEED TO IMPLEMENT NON_ACTIVE PART
     else if (e.target.parentNode.parentNode.tagName == "MENU")
     {
-        siteBreakdown();
         siteBuildUp(e.target.id);
+
+        // if states dropdown is open, close it
+        if (document.getElementById("dropdown-content").classList.contains("dropdown-active"))
+        {
+            console.log("here")
+            toggleMenu();
+        }
     }
-
-
-
-
     // specific state pressed
     else if (e.target.parentNode.id == "dropdown-content")
     {
-        siteBreakdown();
-        siteBuildUp();
-
-        
-        buildPlotSite()
-        document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
-        buildPlots(e.target.id)
-
+        siteBuildUp(e.target.id)
         toggleMenu();
-
     }
     // if open and anywhere is clicked
     else if (document.getElementById("dropdown-content").classList.contains("dropdown-active")) {
@@ -69,13 +60,30 @@ function toggleMenu() {
 }
 
 function siteBuildUp(siteName) {
-    if (siteName == 'National')
+    siteBreakdown();
+    switch(siteName)
     {
-        console.log("here")
-        buildNationalSite();
+        // note: clicking 'states'is handled elsewhere
+        case 'National':
+            document.getElementById("navbar").firstElementChild.setAttribute("id", "national");
+            buildNationalSite();
+            break;
+        case 'Metrics':
+            document.getElementById("navbar").firstElementChild.setAttribute("id", "metrics");
+            // to do
+            break;
+        case 'References':
+            document.getElementById("navbar").firstElementChild.setAttribute("id", "references");
+            // to do
+            break;
+        // case where a state is clicked
+        default:
+            document.getElementById("navbar").firstElementChild.setAttribute("id", "states");
+            buildPlotSite(siteName)
+            break;        
     }
-
 }
+
 function siteBreakdown()
 {
     if (document.getElementById("navbar").firstElementChild.id == "national")       
@@ -86,34 +94,12 @@ function siteBreakdown()
     {
         breakdownPlots()
     }
-}
-
-function breakdownPlots()
-{
-    while (document.getElementById("plots").firstChild)
+    else if (document.getElementById("navbar").firstElementChild.id == "metrics")
     {
-        document.getElementById("plots").firstChild.remove()
+        // to do
     }
-}
-
-function buildNationalSite()
-{
-    buildPlotSite()
-    e = document.createElement('div');
-    e.setAttribute('id', "countryComp");
-    e.setAttribute('style', "height:800px");
-    document.getElementById("plots").appendChild(e)
-}
-
-function buildPlotSite()
-{
-    plots = ["daily_barplot", "tvr", "tpr", "daily_vax", "perc_vax"];
-
-    for (var i = 0; i < plots.length; i++)
+    else if (document.getElementById("navbar").firstElementChild.id == "references")
     {
-        e = document.createElement('div');
-        e.setAttribute('class', "standardPlot");
-        e.setAttribute('id', plots[i]);
-        document.getElementById("plots").appendChild(e)
+        // to do
     }
 }
