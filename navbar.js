@@ -17,6 +17,7 @@ Plotly.d3.csv(dataURL, function(data) {
         state = document.createElement("a");
         state.innerHTML = statesList[i];
         state.setAttribute("id", statesList[i]);
+        state.setAttribute("class", "inactive-state")
         document.getElementById("dropdown-content").appendChild(state);
     }
 })
@@ -31,21 +32,23 @@ document.addEventListener("click", function(e) {
         toggleMenu();
     }
     // if non-active menu button (besides states) is pressed ***NEED TO IMPLEMENT NON_ACTIVE PART
-    else if (e.target.parentNode.parentNode.tagName == "MENU")
+    else if (e.target.parentNode.parentNode.tagName == "MENU" && e.target.classList.contains("inactive"))
     {
         siteBuildUp(e.target.id);
 
         // if states dropdown is open, close it
         if (document.getElementById("dropdown-content").classList.contains("dropdown-active"))
         {
-            console.log("here")
             toggleMenu();
         }
     }
     // specific state pressed
-    else if (e.target.parentNode.id == "dropdown-content")
+    else if (e.target.parentNode.id == "dropdown-content" && e.target.classList.contains("inactive-state"))
     {
+        console.log(e.target.id)
         siteBuildUp(e.target.id)
+        document.getElementById("States").classList.add("active")
+        e.target.classList.replace("inactive-state", "active-state");
         toggleMenu();
     }
     // if open and anywhere is clicked
@@ -63,17 +66,20 @@ function siteBuildUp(siteName) {
     siteBreakdown();
     switch(siteName)
     {
-        // note: clicking 'states'is handled elsewhere
+        // note: clicking 'states' is handled elsewhere
         case 'National':
             document.getElementById("navbar").firstElementChild.setAttribute("id", "national");
+            document.getElementById(siteName).classList.add("active")
             buildNationalSite();
             break;
         case 'Metrics':
             document.getElementById("navbar").firstElementChild.setAttribute("id", "metrics");
+            document.getElementById(siteName).classList.add("active")
             // to do
             break;
         case 'References':
             document.getElementById("navbar").firstElementChild.setAttribute("id", "references");
+            document.getElementById(siteName).classList.add("active")
             // to do
             break;
         // case where a state is clicked
@@ -86,20 +92,25 @@ function siteBuildUp(siteName) {
 
 function siteBreakdown()
 {
+
     if (document.getElementById("navbar").firstElementChild.id == "national")       
     {
+        document.getElementById("National").classList.replace("active", "inactive");
         breakdownPlots()
     }
     else if (document.getElementById("navbar").firstElementChild.id == "states")
     {
+        document.getElementById("States").classList.replace("active", "inactive");
         breakdownPlots()
     }
     else if (document.getElementById("navbar").firstElementChild.id == "metrics")
     {
+        document.getElementById("Metrics").classList.replace("active", "inactive");
         // to do
     }
     else if (document.getElementById("navbar").firstElementChild.id == "references")
     {
+        document.getElementById("References").classList.replace("active", "inactive");
         // to do
     }
 }

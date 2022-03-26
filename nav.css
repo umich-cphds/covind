@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body {
-    margin: 0;
+    margin-top: 0;
 }
 
 menu {
@@ -54,17 +54,26 @@ menu li .active:hover {
 }
 
 .dropdown-content a {
-    color: #333333;
     display: block;
     text-align: left;
     padding: 3px 20px;
 }
 
-.dropdown-content a:hover {
+.dropdown-content .inactive-state a {
+    color: #333333;
+}
+
+.dropdown-content .inactive-state:hover {
     color: #333333;
     display: block;
     text-align: left;
     background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.dropdown-content .active-state:hover {
+    color: #ffffff;
+    background-color: #337ab7;
     cursor: pointer;
 }
 
@@ -88,8 +97,13 @@ menu li .active:hover {
     cursor: pointer;
 }
 
-.menu-other:hover {
+.inactive:hover {
     cursor: pointer;
+}
+
+.active-state {
+    color: #ffffff;
+    background-color: #337ab7;
 }
 
 /* builds down-arrow */

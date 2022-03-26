@@ -1,6 +1,12 @@
 // set menu id, build national data
 window.addEventListener("load", function() {
     document.getElementById("navbar").firstElementChild.setAttribute("id", "national")
+    
+    document.getElementById("National").classList.add("active")
+    document.getElementById("States").classList.add("inactive")
+    document.getElementById("Metrics").classList.add("inactive")
+    document.getElementById("References").classList.add("inactive")
+
     buildNationalSite();
 })
 
@@ -14,7 +20,7 @@ function buildNationalSite()
     e = document.createElement('div');
     e.setAttribute('id', "countryComp");
     e.setAttribute('style', "height:800px");
-    document.getElementById("plots").appendChild(e)
+    document.getElementById("content").appendChild(e)
     buildNational();
 }
 
@@ -35,7 +41,7 @@ function buildPlotSite(locale)
         e = document.createElement('div');
         e.setAttribute('class', "standardPlot");
         e.setAttribute('id', plots[i]);
-        document.getElementById("plots").appendChild(e)
+        document.getElementById("content").appendChild(e)
     }
 
     buildPlots(locale);
@@ -64,8 +70,8 @@ function buildPlots(locale) {
 
 function breakdownPlots()
 {
-    while (document.getElementById("plots").firstChild)
+    while (document.getElementById("content").firstChild)
     {
-        document.getElementById("plots").firstChild.remove()
+        document.getElementById("content").firstChild.remove()
     }
 }
