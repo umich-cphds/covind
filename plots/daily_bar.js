@@ -34,7 +34,7 @@ function makeDailyBarPlot(externalData, plotDiv, locale) {
             var data = [trace1, trace2, trace3];
         
             var layout = {
-                title: 'Daily number of new COVID-19 cases, fatalities and recovered in India',
+                title: title(),
                 barmode: 'stack', 
                 xaxis: 
                     {
@@ -51,6 +51,7 @@ function makeDailyBarPlot(externalData, plotDiv, locale) {
                         text: 'Daily counts'
                     }
                 },
+                margin: margin(),
             };
         
             var config = {responsive: true};

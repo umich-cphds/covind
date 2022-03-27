@@ -21,7 +21,7 @@ function makeTPRPlot(externalData, tprDiv, locale) {
         
         
             var layout = {
-                title: 'Test positive rate',
+                title: title(),
                 yaxis: {
                     title: {
                         text: 'Test positive rate'
@@ -29,6 +29,7 @@ function makeTPRPlot(externalData, tprDiv, locale) {
                 },
                 hovermode:'closest',
                 showlegend: false,
+                margin: margin(),
             };
         
             var data = [trace]

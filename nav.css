@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    font-family: 'Open Sans', 'Arial', sans-serif;
 }
 
 menu {
@@ -9,7 +10,6 @@ menu {
     background-color: #F8F8F8;
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', 'Arial', sans-serif;
     font-size: 14px;
     overflow: hidden;
 }

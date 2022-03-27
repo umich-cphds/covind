@@ -15,7 +15,7 @@ function makeDailyVaxPlot(externalData, plotDiv, locale) {
             };
         
             var layout = {
-                title: 'Daily number of COVID-19 vaccines in India',
+                title: title(),
                 yaxis: {
                     title: {
                         text: 'Number of Vaccines'
@@ -23,6 +23,7 @@ function makeDailyVaxPlot(externalData, plotDiv, locale) {
                 },
                 showlegend: false,
                 hovermode: 'closest',
+                margin: margin(),
             };
         
             var data = [trace];

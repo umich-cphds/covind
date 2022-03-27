@@ -31,7 +31,7 @@ function makePercVaxPlot(externalData, plotDiv, locale) {
         
         
             var layout = {
-                title: 'Percent of population with one or two doses of COVID-19 vaccine in India',
+                title: title(),
                 yaxis: {
                     title: {
                         text: 'Percent of population vaccinated'
@@ -39,6 +39,7 @@ function makePercVaxPlot(externalData, plotDiv, locale) {
                 },
                 hovermode: 'closest',
                 showlegend: false,
+                margin: margin(),
             };
         
             var data = [oneDoseTrace, twoDoseTrace]

@@ -86,7 +86,6 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 		}
 
 		var layout = {
-			title: 'Daily number of COVID-19 cases and deaths',
 			grid: {
 				rows: 2,
 				columns: 1,
@@ -95,7 +94,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 			// top graph, cases
 			xaxis: {
 				anchor: 'y2',
-				title: 'Days since cumulative cases passed 100',
+				title: xaxisResponsiveLabel('cases', 100),
 			},
 			yaxis2: { 
 				title: 'Incident number of reported cases',
@@ -105,49 +104,22 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 			// bottom graph, deaths
 			xaxis2: {
 				anchor: 'y1',
-				title: 'Days since cumulative deaths passed 3',
+
+				title: xaxisResponsiveLabel('deaths', 3),
 			},
 			yaxis: { 
 				title: 'Incident number of reported deaths',
 				domain: [0,.4],
 			},
+			margin: {
+				l: 50,
+				r: 50,
+				b: 50,
+				t: 50,
+        		pad: 0,
+			},
 
-			annotations: [
-				{
-					showarrow: false,
-					// aligns bottom of text box with desired location
-					yanchor: 'bottom',
-					// sets y(0): bottom of plotting area
-					// sets y(1): top of plotting area
-					yref: 'paper',
-					y: 1,
-					xanchor: 'left',
-					xref: 'paper',
-					x: 0,
-
-					text: "COVID-19 cases in India compared to other countries",
-					font: {
-						size: 18,
-					},
-				},
-				{
-					showarrow: false,
-					// aligns bottom of text box with desired location
-					yanchor: 'bottom',
-					// sets y(0): bottom of plotting area
-					// sets y(1): top of plotting area
-					yref: 'paper',
-					y: .4,
-					xanchor: 'left',
-					xref: 'paper',
-					x: 0,
-
-					text: "COVID-19 deaths in India compared to other countries",
-					font: {
-						size: 18,
-					},
-				},
-			]
+			annotations: annotations(),
 		};
 	
 		var config = {responsive: true};
@@ -160,3 +132,97 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 		);
 	});
 };
+
+window.addEventListener('resize', myFunction);
+
+function myFunction() {
+	var updatedLayout = {
+		annotations: annotations(),
+		xaxis: {
+			anchor: 'y2',
+			title: xaxisResponsiveLabel('cases', 100),
+		},
+		xaxis2: {
+			anchor: 'y1',
+			title: xaxisResponsiveLabel('deaths', 3),
+		},
+	}
+	Plotly.relayout(countryComp, updatedLayout)
+}
+
+function casesSubtitle()
+{
+    if (window.matchMedia("(min-width: 815px)").matches) {
+        return 'COVID-19 cases in India compared to other countries'
+    } 
+    else if (window.matchMedia("(min-width: 600px)").matches){
+        return 'COVID-19 cases in India<br>compared to other countries'
+      }
+	else {
+		return 'Country COVID-19<br>cases compared'
+	}
+}
+
+function deathsSubtitle()
+{
+    if (window.matchMedia("(min-width: 815px)").matches) {
+        return 'COVID-19 deaths in India compared to other countries'
+    } 
+    else if (window.matchMedia("(min-width: 600px)").matches){
+        return 'COVID-19 deaths in India<br>compared to other countries'
+      }
+	else {
+		return 'Country COVID-19<br>deaths compared'
+	}
+}
+
+function xaxisResponsiveLabel(type, num) {
+	if (window.matchMedia("(min-width: 500px)").matches) {
+        return 'Days since cumulative ' + type + ' passed ' + num;
+    } 
+    else {
+        return 'Days since cumulative<br>' + type + ' passed ' + num;
+    }
+}
+
+function annotations()
+{
+	return [
+		{
+			showarrow: false,
+			// aligns bottom of text box with desired location
+			yanchor: 'bottom',
+			// sets y(0): bottom of plotting area
+			// sets y(1): top of plotting area
+			yref: 'paper',
+			y: 1,
+			xanchor: 'left',
+			xref: 'paper',
+			x: 0,
+			align: 'left',
+
+			text: casesSubtitle(),
+			font: {
+				size: 18,
+			},
+		},
+		{
+			showarrow: false,
+			// aligns bottom of text box with desired location
+			yanchor: 'bottom',
+			// sets y(0): bottom of plotting area
+			// sets y(1): top of plotting area
+			yref: 'paper',
+			y: .4,
+			xanchor: 'left',
+			xref: 'paper',
+			x: 0,
+			align: 'left',
+
+			text: deathsSubtitle(),
+			font: {
+				size: 18,
+			},
+		},
+	]
+}

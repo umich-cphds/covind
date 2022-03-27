@@ -47,7 +47,7 @@ function makeTVRPlot(externalData, tvrDiv, locale) {
             }
         
             var layout = {
-                title: 'Time-varying R',
+                title: title(),
                 yaxis: {
                     title: {
                         text: 'R(t)'
@@ -67,6 +67,7 @@ function makeTVRPlot(externalData, tvrDiv, locale) {
                     }
                 }],
                 showlegend: false,
+                margin: margin(),
             };
         
             var data = [upper, lower, trace]
