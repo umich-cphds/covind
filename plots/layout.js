@@ -4,7 +4,7 @@ function margin()
         l: 50,
         r: 50,
         b: 30,
-        t: 10,
+        t: 30,
         pad: 0,
     }
 }
