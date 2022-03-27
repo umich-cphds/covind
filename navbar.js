@@ -101,6 +101,9 @@ function siteBreakdown()
     else if (document.getElementById("navbar").firstElementChild.id == "states")
     {
         document.getElementById("States").classList.replace("active", "inactive");
+        for (var elements=document.getElementsByClassName('active-state'), i = 0, l = elements.length; l > i; i++) {
+            elements[0].classList.replace('active-state', 'inactive-state');
+        }
         breakdownPlots()
     }
     else if (document.getElementById("navbar").firstElementChild.id == "metrics")
