@@ -14,21 +14,38 @@ window.addEventListener("load", function() {
 
 function buildNationalSite()
 {
+    content = document.getElementById('content')
+
+    // topmatter
+    makeTopMatter()
+
+    // snapshot
+    f = document.createElement('iframe')
+    // https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/3dab7f4e3eae2e64671802821608ee831cbeb6fe/source_data/package-data/processed/snapshot.html
+    f.setAttribute('src', 'snapshot.html')
+    f.setAttribute('title', 'snapshot')
+    f.setAttribute('id', 'snapshot')
+    content.appendChild(f)
+
+
+    // all plots
     buildPlotSite("India")
+
+    plots = document.getElementById('plots')
 
     // country comp
     t = document.createElement('h2');
     t.innerHTML = 'Daily number of COVID-19 cases and deaths'
-    document.getElementById("content").appendChild(t);
+    plots.appendChild(t);
 
     s = document.createElement('p');
     s.innerHTML = 'The first figure represents COVID-19 case counts where the x-axis starts on the day when each country passed 100 cases. The second figure represents COVID-19 fatalities where the x-axis starts on the day when each country exceeded 3 fatalities. These axes allow comparison of counts at similar stages of the outbreak. You can click on countries in the legend to add or remove them and you can hover your cursor over the lines to see the exact numerical counts.'
-    document.getElementById("content").appendChild(s);
+    plots.appendChild(s);
 
     e = document.createElement('div');
     e.setAttribute('id', "countryComp");
     e.setAttribute('style', "height:800px");
-    document.getElementById("content").appendChild(e)
+    plots.appendChild(e)
     buildNational();
 }
 
@@ -42,22 +59,26 @@ function buildNational()
 
 function buildPlotSite(locale)
 {
+    plots = document.createElement('div')
+    plots.setAttribute('id', 'plots')
+    document.getElementById('content').appendChild(plots)
+
     plots = ["daily_barplot", "tvr", "tpr", "daily_vax", "perc_vax"];
 
     for (var i = 0; i < plots.length; i++)
     {
         t = document.createElement('h2');
         t.setAttribute('id', plots[i] + ' title');
-        document.getElementById("content").appendChild(t);
+        document.getElementById("plots").appendChild(t);
 
         s = document.createElement('p');
         s.setAttribute('id', plots[i] + ' subtitle');
-        document.getElementById("content").appendChild(s);
+        document.getElementById("plots").appendChild(s);
 
         p = document.createElement('div');
         p.setAttribute('class', "standardPlot");
         p.setAttribute('id', plots[i]);
-        document.getElementById("content").appendChild(p)
+        document.getElementById("plots").appendChild(p)
     }
 
     buildPlots(locale);
