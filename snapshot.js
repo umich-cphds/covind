@@ -4,7 +4,10 @@ window.addEventListener('message', function (e) {
 });
 
 window.addEventListener('resize', function (e) {
-    iFrame = document.getElementById('snapshot');
-    iFrame.contentWindow.postMessage("resize", "*");
+    if (document.getElementById('national'))
+    {
+        iFrame = document.getElementById('snapshot');
+        iFrame.contentWindow.postMessage("resize", "*");
+    }
 });
 

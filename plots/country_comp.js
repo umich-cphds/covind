@@ -133,21 +133,24 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 	});
 };
 
-window.addEventListener('resize', myFunction);
+window.addEventListener('resize', countryCompResize);
 
-function myFunction() {
-	var updatedLayout = {
-		annotations: annotations(),
-		xaxis: {
-			anchor: 'y2',
-			title: xaxisResponsiveLabel('cases', 100),
-		},
-		xaxis2: {
-			anchor: 'y1',
-			title: xaxisResponsiveLabel('deaths', 3),
-		},
-	}
-	Plotly.relayout(countryComp, updatedLayout)
+function countryCompResize() {
+	if (document.getElementById('national'))
+	{
+		var updatedLayout = {
+			annotations: annotations(),
+			xaxis: {
+				anchor: 'y2',
+				title: xaxisResponsiveLabel('cases', 100),
+			},
+			xaxis2: {
+				anchor: 'y1',
+				title: xaxisResponsiveLabel('deaths', 3),
+			},
+		}
+		Plotly.relayout(countryComp, updatedLayout)
+	}	
 }
 
 function casesSubtitle()
