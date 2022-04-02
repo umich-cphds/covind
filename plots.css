@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-#content h2 {
+#plots h2 {
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 0;
@@ -14,12 +14,12 @@
     margin: 0em 5em;
 }
 
-#content p {
+#plots p {
     margin: 2px;
     font-size: 13px;
 }
 
-#content #countryComp {
+#plots #countryComp {
     padding-bottom: 2em;
 }
 

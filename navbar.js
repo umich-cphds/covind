@@ -45,7 +45,6 @@ document.addEventListener("click", function(e) {
     // specific state pressed
     else if (e.target.parentNode.id == "dropdown-content" && e.target.classList.contains("inactive-state"))
     {
-        console.log(e.target.id)
         siteBuildUp(e.target.id)
         document.getElementById("States").classList.add("active")
         e.target.classList.replace("inactive-state", "active-state");
@@ -75,12 +74,12 @@ function siteBuildUp(siteName) {
         case 'Metrics':
             document.getElementById("navbar").firstElementChild.setAttribute("id", "metrics");
             document.getElementById(siteName).classList.add("active")
-            // to do
+            buildMetrics();
             break;
         case 'References':
             document.getElementById("navbar").firstElementChild.setAttribute("id", "references");
             document.getElementById(siteName).classList.add("active")
-            // to do
+            buildReferences();
             break;
         // case where a state is clicked
         default:
@@ -92,11 +91,14 @@ function siteBuildUp(siteName) {
 
 function siteBreakdown()
 {
+    while (document.getElementById("content").firstChild)
+    {
+        document.getElementById("content").firstChild.remove()
+    }
 
     if (document.getElementById("navbar").firstElementChild.id == "national")       
     {
         document.getElementById("National").classList.replace("active", "inactive");
-        breakdownPlots()
     }
     else if (document.getElementById("navbar").firstElementChild.id == "states")
     {
@@ -104,16 +106,13 @@ function siteBreakdown()
         for (var elements=document.getElementsByClassName('active-state'), i = 0, l = elements.length; l > i; i++) {
             elements[0].classList.replace('active-state', 'inactive-state');
         }
-        breakdownPlots()
     }
     else if (document.getElementById("navbar").firstElementChild.id == "metrics")
     {
         document.getElementById("Metrics").classList.replace("active", "inactive");
-        // to do
     }
     else if (document.getElementById("navbar").firstElementChild.id == "references")
     {
         document.getElementById("References").classList.replace("active", "inactive");
-        // to do
     }
 }
