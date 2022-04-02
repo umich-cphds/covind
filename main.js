@@ -174,4 +174,6 @@ function buildMetrics() {
     f.setAttribute('id', 'metrics')
     f.setAttribute('height', '1277px')
     metrics.appendChild(f)
+
+    // need to add image here //
 }
