@@ -21,8 +21,8 @@ function buildNationalSite()
 
     // snapshot
     f = document.createElement('iframe')
-    // https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/3dab7f4e3eae2e64671802821608ee831cbeb6fe/source_data/package-data/processed/snapshot.html
-    f.setAttribute('src', 'snapshot.html')
+    snapshotLink = 'https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/d8acf08cd6428f87d313f1bd99134d43a6efba28/source_data/package-data/processed/snapshot.html'
+    f.setAttribute('src', snapshotLink)
     f.setAttribute('title', 'snapshot')
     f.setAttribute('id', 'snapshot')
     content.appendChild(f)
@@ -175,7 +175,12 @@ function buildMetrics() {
     f.setAttribute('height', '1277px')
     metrics.appendChild(f)
 
-    // need to add image here //
+    imgLink = 'https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/r_forest_plot.png'
+    i = document.createElement('img')
+    i.setAttribute('src', imgLink)
+    i.setAttribute('style', 'max-width:800px;')
+    i.setAttribute('width', '100%')
+    metrics.appendChild(i)
 }
 
 function makeTopMatter() {
