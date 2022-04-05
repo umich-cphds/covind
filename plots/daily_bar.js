@@ -24,7 +24,7 @@ function makeDailyBarPlot(externalData, plotDiv, locale) {
             var trace3 = {
                 x: unpack(data, locale, "date"),
                 y: unpack(data, locale, "daily_recovered"),
-                name: 'Recovered',
+                name: 'Recoveries',
                 type: 'bar',
                 marker: {
                     color: '#138808',

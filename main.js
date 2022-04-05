@@ -88,7 +88,7 @@ function buildPlots(locale) {
     var data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv";
 
     document.getElementById('daily_barplot title').innerHTML = 
-        'Daily number of new COVID-19 cases, fatalities and recovered in ' + locale;
+        'Daily number of new COVID-19 cases, fatalities and recoveries in ' + locale;
     document.getElementById('daily_barplot subtitle').innerHTML = 
             'This figure provides the number of COVID-19 new cases (yellow), fatalities (red), and recovered cases (green) in ' + locale + ' You can hover your cursor over the bar to see the exact numerical counts.';
     var dailyBarplotDiv = document.getElementById("daily_barplot");
