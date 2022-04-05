@@ -44,7 +44,7 @@ function buildNationalSite()
 
     e = document.createElement('div');
     e.setAttribute('id', "countryComp");
-    e.setAttribute('style', "height:800px");
+    e.setAttribute('style', "height:800px;margin-bottom:50px;");
     plots.appendChild(e)
     buildNational();
 }
