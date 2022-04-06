@@ -21,7 +21,7 @@ function buildNationalSite()
 
     // snapshot
     f = document.createElement('iframe')
-    snapshotLink = 'https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/d8acf08cd6428f87d313f1bd99134d43a6efba28/source_data/package-data/processed/snapshot.html'
+    snapshotLink = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/snapshot.html'
     f.setAttribute('src', snapshotLink)
     f.setAttribute('title', 'snapshot')
     f.setAttribute('id', 'snapshot')
@@ -90,7 +90,7 @@ function buildPlots(locale) {
     document.getElementById('daily_barplot title').innerHTML = 
         'Daily number of new COVID-19 cases, fatalities and recoveries in ' + locale;
     document.getElementById('daily_barplot subtitle').innerHTML = 
-            'This figure provides the number of COVID-19 new cases (yellow), fatalities (red), and recovered cases (green) in ' + locale + ' You can hover your cursor over the bar to see the exact numerical counts.';
+            'This figure provides the number of COVID-19 new cases (yellow), fatalities (red), and recoveries (green) in ' + locale + '. You can hover your cursor over the bar to see the exact numerical counts.';
     var dailyBarplotDiv = document.getElementById("daily_barplot");
     makeDailyBarPlot(data, dailyBarplotDiv, locale);
 
@@ -114,7 +114,7 @@ function buildPlots(locale) {
     document.getElementById('perc_vax title').innerHTML = 
         'Percent of population with one or two doses of COVID-19 vaccine in ' + locale;
     document.getElementById('perc_vax subtitle').innerHTML = 
-        'This figure provides the percentage of the population with one dose of the COVID-19 vaccine (grey) or two doses of the COVID-19 vaccine (green) in ' + locale + 'since March 15, 2021. You can hover your cursor over the lines to see the exact numerical counts.'
+        'This figure provides the percentage of the population with one dose of the COVID-19 vaccine (grey) or two doses of the COVID-19 vaccine (green) in ' + locale + ' since March 15, 2021. You can hover your cursor over the lines to see the exact numerical counts.'
     var precVaxDiv = document.getElementById("perc_vax");
     makePercVaxPlot(data, precVaxDiv, locale)
 }
@@ -168,7 +168,7 @@ function buildMetrics() {
     
     // metrics
     f = document.createElement('iframe')
-    link = 'https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/1ac21a9599a3bd3e36c5007c50816281cdf183f4/source_data/package-data/raw/metrics_table_full.html'
+    link = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/raw/metrics_table_full.html'
     f.setAttribute('src', link)
     f.setAttribute('title', 'metrics table')
     f.setAttribute('id', 'metrics')
