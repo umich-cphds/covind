@@ -111,13 +111,7 @@ function makeCountryCompPlot(countryCompData, plotDiv) {
 				title: 'Incident number of reported deaths',
 				domain: [0,.4],
 			},
-			margin: {
-				l: 50,
-				r: 50,
-				b: 50,
-				t: 50,
-        		pad: 0,
-			},
+			margin: marginSizing(),
 
 			annotations: annotations(),
 		};
@@ -148,9 +142,32 @@ function countryCompResize() {
 				anchor: 'y1',
 				title: xaxisResponsiveLabel('deaths', 3),
 			},
+			margin: marginSizing(),
 		}
 		Plotly.relayout(countryComp, updatedLayout)
 	}	
+}
+
+function marginSizing()
+{
+    if (window.matchMedia("(min-width: 815px)").matches){
+        return {
+			l: 50,
+			r: 50,
+			b: 50,
+			t: 50,
+			pad: 0,
+		}
+    }
+	else {
+		return {
+			l: 50,
+			r: 50,
+			b: 50,
+			t: 70,
+			pad: 0,
+		}
+	}
 }
 
 function casesSubtitle()
