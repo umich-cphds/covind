@@ -91,11 +91,13 @@ function siteBuildUp(siteName) {
 
 function siteBreakdown()
 {
+    // cleanup content elements
     while (document.getElementById("content").firstChild)
     {
         document.getElementById("content").firstChild.remove()
     }
 
+    // toggle page active
     if (document.getElementById("navbar").firstElementChild.id == "national")       
     {
         document.getElementById("National").classList.replace("active", "inactive");

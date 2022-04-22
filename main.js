@@ -10,8 +10,7 @@ window.addEventListener("load", function() {
     buildNationalSite();
 })
 
-// plot building
-
+// builds national page
 function buildNationalSite()
 {
     content = document.getElementById('content')
@@ -27,10 +26,16 @@ function buildNationalSite()
     f.setAttribute('id', 'snapshot')
     content.appendChild(f)
 
-
     // all plots
     buildPlotSite("India")
 
+    // country comparison
+    buildCountryComp();
+}
+
+// builds the country comparison graphs on national page
+function buildCountryComp()
+{
     plots = document.getElementById('plots')
 
     // country comp
@@ -46,17 +51,13 @@ function buildNationalSite()
     e.setAttribute('id', "countryComp");
     e.setAttribute('style', "height:800px;margin-bottom:50px;");
     plots.appendChild(e)
-    buildNational();
-}
 
-function buildNational()
-{
-    // country comparison
     var countryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases_and_deaths.csv";
     var countryCompDiv = document.getElementById("countryComp")
     makeCountryCompPlot(countryCompData, countryCompDiv)
 }
 
+// adds dom elements to page to enable plot building
 function buildPlotSite(locale)
 {
     plots = document.createElement('div')
@@ -84,6 +85,7 @@ function buildPlotSite(locale)
     buildPlots(locale);
 }
 
+// constructs plots and their titles
 function buildPlots(locale) {
     var data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv";
 
@@ -119,6 +121,7 @@ function buildPlots(locale) {
     makePercVaxPlot(data, precVaxDiv, locale)
 }
 
+// builds references page
 function buildReferences() {
     makeTopMatter()
 
@@ -161,6 +164,7 @@ function buildReferences() {
     document.getElementById('content').appendChild(references)
 }
 
+// builds metrics page
 function buildMetrics() {
     metrics = document.createElement('div')
     metrics.setAttribute('id', 'metrics_page')
@@ -183,6 +187,7 @@ function buildMetrics() {
     metrics.appendChild(i)
 }
 
+// builds to top matter
 function makeTopMatter() {
     topmatter = document.createElement('div')
     topmatter.setAttribute('class', 'topmatter')

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 /* || all content ------------------------------------------*/
-
 body {
     margin: 0;
     font-family: 'Open Sans', 'Arial', sans-serif;
@@ -12,7 +11,6 @@ body {
 }
 
 /* || nav bar ------------------------------------------*/
-
 menu {
     list-style-type: none;
     background-color: #F8F8F8;
@@ -146,7 +144,6 @@ menu li .active:hover {
 }
 
 /* || plots ------------------------------------------*/
-
 .standardPlot {
     height: 600px;
     width: 100%;
@@ -179,7 +176,6 @@ menu li .active:hover {
 }
 
 /* || snapshot and metrics ------------------------------------------*/
-
 #snapshot, #metrics {
     border: none; 
     width: 100%;
@@ -220,7 +216,6 @@ menu li .active:hover {
 }
 
 /* || top matter ------------------------------------------*/
-
 .topmatter {
     margin: .5em;
     max-width: 100%;
