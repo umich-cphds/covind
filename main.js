@@ -218,6 +218,10 @@ function makeTopMatter() {
             <p>
                 Please direct inquiries to <a href="mailto:mmsalva@umich.edu">Maxwell Salvatore</a>, <a href="mailto:alexrix@umich.edu">Alexander Rix</a>, <a href="mailto:mkleinsa@umich.edu">Michael Kleinsasser</a>, and <a href="mailto:bhramar@umich.edu">Bhramar Mukherjee</a>
             </p>
+            <p>
+                Feel free to browse the <a href="https://github.com/umich-cphds/covind">source code</a>
+                and the underlying <a href="https://github.com/umich-cphds/cov-ind-19-data">data repository</a> 
+                that run this app.
         </div>
             
         <div class="main-sub1">
