@@ -222,6 +222,7 @@ function makeTopMatter() {
                 Feel free to browse the <a href="https://github.com/umich-cphds/covind">source code</a>
                 and the underlying <a href="https://github.com/umich-cphds/cov-ind-19-data">data repository</a> 
                 that run this app.
+            </p>
         </div>
             
         <div class="main-sub1">
