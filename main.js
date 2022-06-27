@@ -216,7 +216,7 @@ function makeTopMatter() {
                 Baladandayuthapani, and Parikshit Ghosh. Led by PI <a href="http://www-personal.umich.edu/~bhramar/">Bhramar Mukherjee</a>.
             </p>
             <p>
-                Please direct inquiries to <a href="mailto:mmsalva@umich.edu">Maxwell Salvatore</a>, <a href="mailto:alexrix@umich.edu">Alexander Rix</a>, <a href="mailto:mkleinsa@umich.edu">Michael Kleinsasser</a>, and <a href="mailto:bhramar@umich.edu">Bhramar Mukherjee</a>
+                Please direct inquiries to <a href="mailto:mmsalva@umich.edu">Maxwell Salvatore</a>, <a href="mailto:alexrix@umich.edu">Alexander Rix</a>, <a href="mailto:mkleinsa@umich.edu">Michael Kleinsasser</a>, <a href="mailto:evcohen@umich.edu">Evan Cohen</a>, and <a href="mailto:bhramar@umich.edu">Bhramar Mukherjee</a>
             </p>
             <p>
                 Feel free to browse the <a href="https://github.com/umich-cphds/covind">source code</a>
