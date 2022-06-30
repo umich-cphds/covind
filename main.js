@@ -31,6 +31,9 @@ function buildNationalSite()
 
     // country comparison
     buildCountryComp();
+
+    // country comparison
+    buildPredictions();
 }
 
 // builds the country comparison graphs on national page
@@ -55,6 +58,33 @@ function buildCountryComp()
     var countryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases_and_deaths.csv";
     var countryCompDiv = document.getElementById("countryComp")
     makeCountryCompPlot(countryCompData, countryCompDiv)
+}
+
+// builds the national prediction plots on national page
+function buildPredictions()
+{
+    plots = document.getElementById('plots')
+
+    locale = "India";
+
+    // predictions
+    t = document.createElement('h2');
+    t.innerHTML = 'SEIR case and death projections'
+    plots.appendChild(t);
+
+    s = document.createElement('p');
+    s.innerHTML = 'This figure provides the projected number of COVID-19 new cases (green) and deaths (orange) in ' + locale + '. You can hover your cursor over the bar to see the exact numerical counts.'
+    plots.appendChild(s);
+
+    e = document.createElement('div');
+    e.setAttribute('id', "nat_predictions");
+    e.setAttribute('style', "height:800px;margin-bottom:50px;");
+    plots.appendChild(e)
+
+    var pred_data = "https://raw.githubusercontent.com/mkleinsa/CovidPredTesting/master/SEIR_predictions.csv"
+    var dailyPredplotDiv = document.getElementById("nat_predictions");
+    makeDailyPredictionPlot(pred_data, dailyPredplotDiv);
+
 }
 
 // adds dom elements to page to enable plot building
@@ -119,6 +149,7 @@ function buildPlots(locale) {
         'This figure provides the percentage of the population with one dose of the COVID-19 vaccine (grey) or two doses of the COVID-19 vaccine (green) in ' + locale + ' since March 15, 2021. You can hover your cursor over the lines to see the exact numerical counts.'
     var precVaxDiv = document.getElementById("perc_vax");
     makePercVaxPlot(data, precVaxDiv, locale)
+
 }
 
 // builds references page

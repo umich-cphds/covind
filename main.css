@@ -169,6 +169,10 @@ menu li .active:hover {
     padding-bottom: 2em;
 }
 
+#plots #nat_predictions {
+    padding-bottom: 2em;
+}
+
 @media screen and (max-width: 650px) {
     #plots {
         margin: 0px 1em;
