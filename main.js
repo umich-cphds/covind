@@ -81,7 +81,7 @@ function buildPredictions()
     e.setAttribute('style', "height:800px;margin-bottom:50px;");
     plots.appendChild(e)
 
-    var pred_data = "https://raw.githubusercontent.com/mkleinsa/CovidPredTesting/master/SEIR_predictions.csv"
+    var pred_data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/SEIR_predictions.csv"
     var dailyPredplotDiv = document.getElementById("nat_predictions");
     makeDailyPredictionPlot(pred_data, dailyPredplotDiv);
 
