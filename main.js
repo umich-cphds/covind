@@ -24,6 +24,7 @@ function buildNationalSite()
     f.setAttribute('src', snapshotLink)
     f.setAttribute('title', 'snapshot')
     f.setAttribute('id', 'snapshot')
+    f.setAttribute('height', 300)
     content.appendChild(f)
 
     // all plots
