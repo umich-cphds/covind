@@ -1,5 +1,5 @@
 // add state options to menu
-dataURL = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv"
+dataURL = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/new_everything.csv"
 statesList = [];
 Plotly.d3.csv(dataURL, function(data) {
 
