@@ -20,7 +20,7 @@ function buildNationalSite()
 
     // snapshot
     f = document.createElement('iframe')
-    snapshotLink = 'https://rawcdn.githack.com/umich-cphds/cov-ind-19-data/8668340e100c33c6f41396f135466ba159ceb8fa/source_data/package-data/processed/snapshot.html'
+    snapshotLink = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/snapshot.html'
     f.setAttribute('src', snapshotLink)
     f.setAttribute('title', 'snapshot')
     f.setAttribute('id', 'snapshot')
