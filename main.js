@@ -204,7 +204,7 @@ function buildMetrics() {
     
     // metrics
     f = document.createElement('iframe')
-    link = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/raw/metrics_table_full.html'
+    link = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/raw/metrics_table_full.html'
     f.setAttribute('src', link)
     f.setAttribute('title', 'metrics table')
     f.setAttribute('id', 'metrics')
