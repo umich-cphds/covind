@@ -248,7 +248,7 @@ function makeTopMatter() {
                 Baladandayuthapani, and Parikshit Ghosh. Led by PI <a href="http://www-personal.umich.edu/~bhramar/">Bhramar Mukherjee</a>.
             </p>
             <p>
-                Please direct inquiries to <a href="mailto:mmsalva@umich.edu">Maxwell Salvatore</a>, <a href="mailto:alexrix@umich.edu">Alexander Rix</a>, <a href="mailto:mkleinsa@umich.edu">Michael Kleinsasser</a>, <a href="mailto:evcohen@umich.edu">Evan Cohen</a>, and <a href="mailto:bhramar@umich.edu">Bhramar Mukherjee</a>
+                Please direct inquiries to <a href="mailto:mmsalva@umich.edu">Maxwell Salvatore</a>, <a href="mailto:mkleinsa@umich.edu">Michael Kleinsasser</a>, <a href="mailto:evcohen@umich.edu">Evan Cohen</a>, and <a href="mailto:bhramar@umich.edu">Bhramar Mukherjee</a>.
             </p>
             <p>
                 Feel free to browse the <a href="https://github.com/umich-cphds/covind">source code</a>
@@ -260,12 +260,7 @@ function makeTopMatter() {
         <div class="main-sub1">
             <h4>Sources</h4>
             <p>
-                Non-India country-level data source: <a href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE COVID-19 GitHub</a></p>
-            <p>
-                India National and State / Union Territory data sources:
-                    Through October 17, 2021 - <a href="https://www.covid19india.org">covid19india.org</a></p>
-            <p>
-                After October 17, 2021 - Count data: <a href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare (MoHFW)</a> Vaccine data: <a href="https://www.cowin.gov.in/">CoWIN</a></p>
+                Data source is COVID19-Bharat: <a href="https://data.covid19bharat.org/">https://data.covid19bharat.org/</a></p>
             <p>
                 R modeling package: <a href="https://github.com/lilywang1988/eSIR">eSIR R package</a></p>
         </div>
