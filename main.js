@@ -20,7 +20,7 @@ function buildNationalSite()
 
     // snapshot
     f = document.createElement('iframe')
-    snapshotLink = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/snapshot.html'
+    snapshotLink = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/snapshot.html'
     f.setAttribute('src', snapshotLink)
     f.setAttribute('title', 'snapshot')
     f.setAttribute('id', 'snapshot')
@@ -56,7 +56,7 @@ function buildCountryComp()
     e.setAttribute('style', "height:800px;margin-bottom:50px;");
     plots.appendChild(e)
 
-    var countryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/case_death_country_comp_cases_and_deaths.csv";
+    var countryCompData = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/case_death_country_comp_cases_and_deaths.csv";
     var countryCompDiv = document.getElementById("countryComp")
     makeCountryCompPlot(countryCompData, countryCompDiv)
 }
@@ -82,7 +82,7 @@ function buildPredictions()
     e.setAttribute('style', "height:800px;margin-bottom:50px;");
     plots.appendChild(e)
 
-    var pred_data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/SEIR_predictions.csv"
+    var pred_data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/SEIR_predictions.csv"
     var dailyPredplotDiv = document.getElementById("nat_predictions");
     makeDailyPredictionPlot(pred_data, dailyPredplotDiv);
 
@@ -118,7 +118,7 @@ function buildPlotSite(locale)
 
 // constructs plots and their titles
 function buildPlots(locale) {
-    var data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/new_everything.csv";
+    var data = "https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/new_everything.csv";
 
     document.getElementById('daily_barplot title').innerHTML = 
         'Daily number of new COVID-19 cases, fatalities and recoveries in ' + locale;
@@ -204,14 +204,14 @@ function buildMetrics() {
     
     // metrics
     f = document.createElement('iframe')
-    link = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/raw/metrics_table_full.html'
+    link = 'https://raw.githack.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/raw/metrics_table_full.html'
     f.setAttribute('src', link)
     f.setAttribute('title', 'metrics table')
     f.setAttribute('id', 'metrics')
     f.setAttribute('height', '1277px')
     metrics.appendChild(f)
 
-    imgLink = 'https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/test/source_data/package-data/processed/r_forest_plot.png'
+    imgLink = 'https://raw.githubusercontent.com/umich-cphds/cov-ind-19-data/master/source_data/package-data/processed/r_forest_plot.png'
     i = document.createElement('img')
     i.setAttribute('src', imgLink)
     i.setAttribute('style', 'max-width:800px;')
